@@ -11,7 +11,7 @@ export class UserProfileComponent implements OnInit {
   age = 25
   quote = ''
   photo = "https://randomuser.me/api/portraits/lego/2.jpg"
-  hidden=true
+  hide=true
 
   constructor() { 
  }

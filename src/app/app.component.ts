@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Mik Website';
+  title = 'Test exo raclette' ;
+  isThisIngredientVital:boolean = true;
+  showMovies :boolean = true;
+  //songList:string[] = ["3 Little Birds","Hey Yah!","No mas"]
+
 }
+
+
+
