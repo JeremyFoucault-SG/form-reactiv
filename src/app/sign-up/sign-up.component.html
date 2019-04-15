@@ -1,2 +1,33 @@
-
-<h1>Sign-up</h1><input type="email" name="email"/>
+<form (ngSubmit)="onSubmit()" #myForm="ngForm">
+    <div>
+        Form submitted ? {{myForm.submitted}}
+        Form valid ? {{myForm.valid}}
+        Form invalid ? {{myForm.valid}}
+    </div>
+    <div>
+        <label for="title-order">Title</label>
+        <input name="title-order" type="text" [(ngModel)]="model.title" #title="ngModel" required maxlength="25"
+            minlength="4">
+    </div>
+        <div *ngIf="myForm.submitted">
+        <div *ngIf="title.errors">
+            <span *ngIf="title.errors.required">Le champs title est requis</span>
+            <span *ngIf="title.errors.maxlength">La quantité maximal doit être inférieur à 25</span>
+            <span *ngIf="title.errors.minlength">La quantité minimal doit être superieur à 4</span>
+        </div>
+    </div>
+    
+    <div>
+        <label for="contact-order">Contact</label>
+        <input name="contact-order" type="email" [(ngModel)]="model.contact" #contact="ngModel" required email>
+    </div>
+    <div *ngIf="myForm.submitted">
+        <div *ngIf="contact.errors">
+            <span *ngIf="contact.errors.required">Le champ email est invalide</span>
+            <span *ngIf="contact.errors.email">L'adresse email doit être valide</span>
+        </div>
+        </div>
+    
+    <button type="reset">Restaurer</button>
+    <button type="submit">Sauvegarder</button>
+</form>
