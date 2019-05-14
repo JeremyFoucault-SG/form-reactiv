@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <div class="container">
-<div class="card text-center" text > 
+<div class="card text-center col-6" text > 
 <img [src]="photo" alt="photo"/> <br>
 <label for="citatition">Quote</label> 
 <input type="text" [(ngModel)]="quote" name="citation" id="citation"> <br>
@@ -9,7 +9,7 @@
 <p [hidden]="hide">age {{age}}</p><br>
 <p>name {{name}}</p><br>
 <p>firstName{{firstName}}</p> <br>
-<button (click)="hide = !hide">hidden age</button>
+<button class="btn btn-primary" (click)="hide = !hide">hidden age</button>
 <h2>{{quote}}</h2>
 </div>
 </div>

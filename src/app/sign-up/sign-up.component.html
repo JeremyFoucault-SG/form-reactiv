@@ -1,33 +1,37 @@
-<form (ngSubmit)="onSubmit()" #myForm="ngForm">
-    <div>
-        Form submitted ? {{myForm.submitted}}
-        Form valid ? {{myForm.valid}}
-        Form invalid ? {{myForm.valid}}
-    </div>
-    <div>
-        <label for="title-order">Title</label>
-        <input name="title-order" type="text" [(ngModel)]="model.title" #title="ngModel" required maxlength="25"
-            minlength="4">
-    </div>
-        <div *ngIf="myForm.submitted">
-        <div *ngIf="title.errors">
-            <span *ngIf="title.errors.required">Le champs title est requis</span>
-            <span *ngIf="title.errors.maxlength">La quantité maximal doit être inférieur à 25</span>
-            <span *ngIf="title.errors.minlength">La quantité minimal doit être superieur à 4</span>
+<div class="container">
+    <h1 class="display-4 my-3">Sign Up</h1>
+  
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  
+      <div class="form-group my-3">
+        <label for="user">Username</label>
+        <input [(ngModel)]="formModel.user" #user="ngModel" type="text" name="user" class="form-control shadow" id="user"
+          placeholder="Enter username" required minlength="4" maxlength="25">
+      </div>
+      
+      <div *ngIf="form.submitted">
+        <div *ngIf="user.errors">
+          <span *ngIf="user.errors.required">Le champs user est requis</span>
+          <span *ngIf="user.errors.minlength">Le champs user doit dépasser 4 caractères</span>
+          <span *ngIf="user.errors.maxlength">Le champs user ne doit pas dépasser 25 caractères</span>
         </div>
-    </div>
-    
-    <div>
-        <label for="contact-order">Contact</label>
-        <input name="contact-order" type="email" [(ngModel)]="model.contact" #contact="ngModel" required email>
-    </div>
-    <div *ngIf="myForm.submitted">
+      </div>
+  
+  
+      <div class="form-group my-3">
+        <label for="inputEmail1">Email address</label>
+        <input [(ngModel)]="formModel.email" #contact="ngModel" type="email" name="email" class="form-control shadow"
+          id="email" placeholder="Enter email" required email>
+      </div>
+  
+      <div *ngIf="form.submitted">
         <div *ngIf="contact.errors">
-            <span *ngIf="contact.errors.required">Le champ email est invalide</span>
-            <span *ngIf="contact.errors.email">L'adresse email doit être valide</span>
+          <span *ngIf="contact.errors.required">Le champs email est requis</span>
+          <span *ngIf="contact.errors.email">Le champs email est invalide</span>
         </div>
-        </div>
-    
-    <button type="reset">Restaurer</button>
-    <button type="submit">Sauvegarder</button>
-</form>
+      </div>
+  
+      <button type="submit" class="btn btn-primary my-3 shadow">Submit</button>
+  
+    </form>
+  </div>

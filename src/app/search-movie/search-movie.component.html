@@ -1,0 +1,58 @@
+<div class="container">
+    <h1 class="display-4 my-3">Search Movie</h1>
+  
+    <form [formGroup]="searchMovieForm" #movieForm="ngForm">
+  
+      <div formGroupName="idGroup">
+        <label>ID / Title</label>
+        <div class="form-group mb-3">
+          <input type="text" class="form-control shadow"
+            [ngClass]="{'is-invalid': searchMovieForm.get('idGroup').errors && movieForm.submitted, 'is-valid': searchMovieForm.get('idGroup').valid}"
+            id="idElt" placeholder="Enter ID..." formControlName="idElt">
+        </div>
+        <div class="form-group my-3">
+          <input type="text" name="title" class="form-control shadow"
+            [ngClass]="{'is-invalid': searchMovieForm.get('idGroup').errors && movieForm.submitted, 'is-valid': searchMovieForm.get('idGroup').valid}"
+            id="title" placeholder="Enter title..." formControlName="title">
+        </div>
+        <div *ngIf="movieForm.submitted">
+          <div *ngIf="searchMovieForm.get('idGroup').errors" [ngStyle]="{'color': 'red'}">
+            {{searchMovieForm.get('idGroup').errors.isRequired}}</div>
+        </div>
+      </div>
+  
+      <div class="form-group my-3">
+        <label>Type</label>
+        <select class="custom-select shadow" formControlName="type"
+          [ngClass]="{'is-valid': searchMovieForm.get('type').valid && searchMovieForm.get('type').touched}">
+          <option value="movie">Movie</option>
+          <option value="serie">Serie</option>
+          <option value="episode">Episode</option>
+        </select>
+      </div>
+  
+      <div class="form-group my-3">
+        <label for="releaseDate">Release Date</label>
+        <input type="date" name="releaseDate" class="form-control shadow" id="releaseDate"
+          [ngClass]="{'is-invalid': searchMovieForm.get('releaseDate').errors && movieForm.submitted, 'is-valid': searchMovieForm.get('releaseDate').valid}"
+          placeholder="Enter release date" formControlName="releaseDate">
+      </div>
+      <div *ngIf="movieForm.submitted">
+        <div *ngIf="searchMovieForm.get('releaseDate').errors" [ngStyle]="{'color': 'red'}">
+          {{searchMovieForm.get('releaseDate').errors.min}}</div>
+      </div>
+  
+      <div class="form-group my-3">
+        <label>Sheet</label>
+        <select class="custom-select shadow" formControlName="sheet" 
+          [ngClass]="{'is-valid': searchMovieForm.get('sheet').valid && searchMovieForm.get('sheet').touched}">
+          <option value="complete">Complete</option>
+          <option value="short">Short</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary my-3 shadow" (click)="onSubmit(searchMovieForm)"
+        [ngClass]="{'btn-danger': movieForm.invalid && movieForm.submitted, 'btn-success': movieForm.valid && movieForm.submitted}">Submit</button>
+  
+    </form>
+  </div>

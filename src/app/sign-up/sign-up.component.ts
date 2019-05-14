@@ -12,13 +12,16 @@ import { Order } from './order';
 
 export class SignUpComponent {
 
-  model: Order = new Order();
+  orderForm = this.fb.group({
+    title: ['', Validators.required],
+    contact: ['', [Validators.required, Validators.email]],
+  });
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   onSubmit() {
-    // Form submitted
-    console.log(this.model);
+    // Get form value as JSON object
+    console.log('oderForm submitted : ', this.orderForm.value);
   }
 }
 
